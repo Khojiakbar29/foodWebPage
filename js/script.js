@@ -96,4 +96,62 @@ window.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('show');
         document.body.style.overflow = '';
     })
+
+    //Using classes for carts
+    class MenuCard {
+        constructor (src, alt, title, descr, price, parentSelector) {
+            this.src = src;
+            this.alt = alt;
+            this.title = title;
+            this.descr = descr;
+            this.price = price;
+            this.parent = document.querySelector(parentSelector);
+        }
+        rendor() {
+            const element = document.createElement('div');
+            element.innerHTML = `
+            <div class="menu__item">
+                <img src=${this.src} alt=${this.alt}>
+                <h3 class="menu__item-subtitle">${this.title}</h3>
+                <div class="menu__item-descr">${this.descr}</div>
+                <div class="menu__item-divider"></div>
+                <div class="menu__item-price">
+                    <div class="menu__item-cost">Price:</div>
+                    <div class="menu__item-total"><span>${this.price}</span> PLN/day</div>
+                </div>
+            </div>
+            `
+            this.parent.append(element);
+        }
+    }
+    
+    new MenuCard(
+        "img/tabs/vegy.jpg",
+        "vegy",
+        'The "Fitness" menu',
+        'The Fitness menu is a new approach to cooking: more fresh vegetables and fruits. The product of active and healthy people. This is a brand new product with an optimal price and high quality!',
+        229,
+        '.menu .container'
+    ).rendor();
+
+    new MenuCard(
+        "img/tabs/elite.jpg",
+        "elite",
+        'The "Premium" Menu',
+        'In the Premium menu, we use not only beautiful packaging design, but also high-quality execution of dishes. Red fish, seafood, fruits - restaurant menu without going to a restaurant!',
+        550,
+        '.menu .container'
+    ).rendor();
+
+    new MenuCard(
+        "img/tabs/post.jpg",
+        "post",
+        'The "Lean" menu',
+        'The “Lean” menu is a careful selection of ingredients: complete absence of animal products, milk from almonds, oats, coconut or buckwheat, the right amount of protein due to tofu and imported vegetarian steaks.',
+        430,
+        '.menu .container'
+    ).rendor();
+    
+
+
 })
