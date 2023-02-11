@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    const deadline = '2023-02-06'
+    const deadline = '2023-05-06'
 
     function getTimeRemaining(finalTime) {
         const t = Date.parse(finalTime) - Date.parse(new Date()),
@@ -206,4 +206,9 @@ window.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+    
+    fetch('http://localhost:3000/menu')
+        .then(data => data.json())
+        .then(res => console.log(res));
+
 })
